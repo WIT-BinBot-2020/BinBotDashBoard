@@ -37,8 +37,6 @@
                             this.disk.push(data.disk)
                         }
                         this.setOptions()
-                        console.log(this.chartdata)
-                        console.log(this.options)
                         this.renderChart(this.chartdata, this.options)
                         this.loaded = true
                     }
@@ -49,7 +47,6 @@
                 )
             },
             setOptions() {
-                console.log( this.cpu.slice(1,3))
                 this.chartdata = {
                     labels: this.time,
                     datasets: [{

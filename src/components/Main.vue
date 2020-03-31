@@ -1,15 +1,22 @@
 <template>
+  <div>
   <div class="ui raised container segment">
     <PiStats></PiStats>
+  </div>
+  <div class="ui raised container segment">
+    <batLevel></batLevel>
+  </div>
   </div>
 </template>
 
 <script>
   import PiStats from "@/components/Graphs/PiStats";
+  import batLevel from "@/components/Graphs/batLevel";
+
 export default {
   name: 'HelloWorld',
   components: {
-    PiStats
+    PiStats, batLevel
   },
   props: {
     msg: String
