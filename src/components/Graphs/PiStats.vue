@@ -1,7 +1,7 @@
 
-    <div>
-        <Line v-if="loaded" :chartdata="this.chartdata" :options="this.options"/>
-    </div>
+<div>
+     <Line v-if="loaded" :chartdata="this.chartdata" :options="this.options"/>
+</div>
 
 <script>
     import { Line } from 'vue-chartjs'
@@ -11,6 +11,7 @@
         name: "PiStats",
         extends: Line,
         components: {Line},
+        props: ["timeRange"],
         data() {
             return {
                 loaded: false,
@@ -27,7 +28,7 @@
         },
         methods: {
             getData() {
-                binbotproxy.piStats().then(
+                binbotproxy.piStats(this.timeRange).then(
                     response => {
                         for(let item in response.data) {
                             const data = response.data[item]

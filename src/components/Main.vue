@@ -1,7 +1,13 @@
 <template>
   <div>
   <div class="ui raised container segment">
-    <PiStats></PiStats>
+    <PiStats v-bind:timeRange="piSysTimeRange" :key="piSysKey"></PiStats>
+    <br>
+    <label>Time Range - Days</label>
+    <div class="ui icon input">
+      <input v-model="piSysTimeRange" type="text" placeholder="Time Range">
+      <i class="inverted circular search link icon" v-on:click="updatePiStats"></i>
+    </div>
   </div>
   <div class="ui raised container segment">
     <batLevel></batLevel>
@@ -20,6 +26,17 @@ export default {
   },
   props: {
     msg: String
+  },
+  data(){
+    return {
+      piSysTimeRange: 30,
+      piSysKey: 0,
+    }
+  },
+  methods: {
+    updatePiStats(){
+      this.piSysKey += 1;
+    }
   }
 }
 </script>
