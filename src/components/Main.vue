@@ -9,6 +9,21 @@
       <i class="inverted circular search link icon" v-on:click="updatePiStats"></i>
     </div>
   </div>
+    <div class="ui raised centered card">
+      <div class="content">
+        <header class="ui centered header"> Recent Messages </header>
+      </div>
+        <div class="content">
+          <div class="ui middle aligned divided list">
+          <div class="item" v-for="(item, index) in recentMessages" :key="index">
+            <div class="content">
+              <label class="header">{{index + 1}} : {{ item.message }}</label>
+            </div>
+          </div>
+        </div>
+        <button class="ui green button" v-on:click="getMessages">Refresh</button>
+      </div>
+    </div>
   <div class="ui raised container segment">
     <batLevel></batLevel>
   </div>
@@ -18,6 +33,7 @@
 <script>
   import PiStats from "@/components/Graphs/PiStats";
   import batLevel from "@/components/Graphs/batLevel";
+  import binbotproxy from "../services/binbotproxy";
 
 export default {
   name: 'HelloWorld',
@@ -27,15 +43,29 @@ export default {
   props: {
     msg: String
   },
+  created() {
+    this.getMessages()
+  },
   data(){
     return {
       piSysTimeRange: 30,
       piSysKey: 0,
+      recentMessages: []
     }
   },
   methods: {
     updatePiStats(){
       this.piSysKey += 1;
+    },
+    getMessages() {
+      binbotproxy.recentMessages().then(
+              response => {
+               console.log(response)
+                this.recentMessages = response.data
+              }).catch(
+              error => {
+                console.log(error)
+              })
     }
   }
 }

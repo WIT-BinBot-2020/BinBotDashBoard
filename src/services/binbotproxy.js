@@ -10,5 +10,8 @@ export default {
     },
     batLevel () {
         return Api().get('batLevel')
+    },
+    recentMessages() {
+        return Api().get('recentMessages')
     }
 }
