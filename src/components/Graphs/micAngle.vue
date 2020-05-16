@@ -10,6 +10,7 @@
         name: "micAngle",
         compnents: {Radar},
         extends: Radar,
+        props: ["timeRange"],
         data() {
             return {
                 loaded: false,
@@ -60,7 +61,7 @@
         },
         methods: {
             getData() {
-                binbotproxy.micAngle(30).then(
+                binbotproxy.micAngle(this.timeRange).then(
                     response => {
                         this.filterAngles(response.data.angles)
                         this.getRanges()
@@ -115,7 +116,7 @@
                             max: 100,
                             stepSize: 10
                         }
-                    }
+                        }
                 }
             }
         }

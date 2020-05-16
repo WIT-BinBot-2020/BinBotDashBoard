@@ -3,7 +3,7 @@ import Api from './api'
 export default {
     piStats (timeRange) {
         if(timeRange === ""){
-            timeRange = 30
+            timeRange = 1
         }
         console.log(typeof timeRange)
         return Api().get("piStats?range="+timeRange)
@@ -15,6 +15,9 @@ export default {
         return Api().get('recentMessages')
     },
     micAngle(timeRange) {
+        if(timeRange === ""){
+            timeRange = 1
+        }
         return Api().get('micAngleArrival?range='+timeRange)
     }
 }
