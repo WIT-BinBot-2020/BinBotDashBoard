@@ -2,11 +2,16 @@ import Api from './api'
 
 export default {
     piStats (timeRange) {
-        if(timeRange === ""){
-            timeRange = 1
+        if(timeRange.sysTimeRangeDays === ""){
+            timeRange.sysTimeRangeDays = 1
         }
-        console.log(typeof timeRange)
-        return Api().get("piStats?range="+timeRange)
+        if(timeRange.sysTimeRangeHours === ""){
+            timeRange.sysTimeRangeHours = 1
+        }
+        if(timeRange.sysTimeRangeMins === ""){
+            timeRange.sysTimeRangeMins = 1
+        }
+        return Api().get("piStats?rangeDays="+timeRange.sysTimeRangeDays+"&rangeHours="+timeRange.sysTimeRangeHours+"&rangeMinutes="+timeRange.sysTimeRangeMins)
     },
     batLevel () {
         return Api().get('batLevel')
@@ -15,9 +20,15 @@ export default {
         return Api().get('recentMessages')
     },
     micAngle(timeRange) {
-        if(timeRange === ""){
-            timeRange = 1
+        if(timeRange.sysTimeRangeDays === ""){
+            timeRange.sysTimeRangeDays = 1
         }
-        return Api().get('micAngleArrival?range='+timeRange)
+        if(timeRange.sysTimeRangeHours === ""){
+            timeRange.sysTimeRangeHours = 1
+        }
+        if(timeRange.sysTimeRangeMins === ""){
+            timeRange.sysTimeRangeMins = 1
+        }
+        return Api().get("micAngleArrival?rangeDays="+timeRange.sysTimeRangeDays+"&rangeHours="+timeRange.sysTimeRangeHours+"&rangeMinutes="+timeRange.sysTimeRangeMins)
     }
 }

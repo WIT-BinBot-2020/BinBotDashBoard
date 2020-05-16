@@ -39,8 +39,6 @@
                 )
             },
             setOptions() {
-                console.log(this.time)
-                console.log(this.batLevel)
                 let color = this.getColor(this.batLevel)
                 this.chartdata = {
                     labels: [1],

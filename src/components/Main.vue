@@ -1,18 +1,33 @@
 <template>
     <div>
-    <div>
-      <br>
-      <label>Time Range - Days</label>
-      <div class="ui icon input">
-        <input v-model="sysTimeRange" type="text" placeholder="Time Range">
-        <i class="inverted circular search link icon" v-on:click="updatePiStats"></i>
+    <div class="ui raised container segment">
+      <div class="ui header">Time Range</div>
+      <div class="ui right labeled input">
+        <input v-model="timeRange.sysTimeRangeDays" type="text" placeholder="Time Range Days">
+        <div class="ui basic label">
+          Days
+        </div>
       </div>
+      <div class="ui right labeled input">
+        <input v-model="timeRange.sysTimeRangeHours" type="text" placeholder="Time Range Hours">
+        <div class="ui basic label">
+          Hours
+        </div>
+      </div>
+      <div class="ui right labeled input">
+        <input v-model="timeRange.sysTimeRangeMins" type="text" placeholder="Time Range Minutes">
+        <div class="ui basic label">
+          Minutes
+        </div>
+      </div>
+      <br><br>
+      <button class="ui green button" v-on:click="updateTimeRange">Filter</button>
     </div>
     <div class="ui two column stackable middle aligned grid raised segment">
       <div class="column">
         <div class="ui raised container segment">
           <div class="ui centered header">PI System Usage</div>
-          <PiStats v-bind:timeRange="sysTimeRange" :key="sysKey"></PiStats>
+          <PiStats v-bind:timeRange="timeRange" :key="sysKey"></PiStats>
         </div>
       </div>
       <div class="column">
@@ -43,7 +58,7 @@
       <div class="column">
         <div class="ui raised centered container segment">
           <div class="ui centered header">Mic Angle Detection</div>
-          <micAngle v-bind:timeRange="sysTimeRange" :key="sysKey"></micAngle>
+          <micAngle v-bind:timeRange="timeRange" :key="sysKey"></micAngle>
         </div>
       </div>
     </div>
@@ -69,13 +84,17 @@ export default {
   },
   data(){
     return {
-      sysTimeRange: 1,
+      timeRange: {
+        sysTimeRangeDays: 1,
+        sysTimeRangeMins: 0,
+        sysTimeRangeHours: 0,
+      },
       sysKey: 0,
       recentMessages: []
     }
   },
   methods: {
-    updatePiStats(){
+    updateTimeRange(){
       this.sysKey += 1;
     },
     getMessages() {

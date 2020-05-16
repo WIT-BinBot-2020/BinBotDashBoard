@@ -94,7 +94,6 @@
                 for(let i in this.sortedAngleData){
                     this.rangeLengths.push(((this.sortedAngleData[i].length/ total) * 100).toFixed(0))
                 }
-                console.log(Object.keys(this.sortedAngleData))
                 this.setOptions()
                 this.renderChart(this.chartdata, this.options)
             },
