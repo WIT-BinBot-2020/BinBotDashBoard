@@ -61,6 +61,12 @@
           <micAngle v-bind:timeRange="timeRange" :key="sysKey"></micAngle>
         </div>
       </div>
+      <div class="column">
+        <div class="ui raised centered container segment">
+          <div class="ui centered header">Block Frequency</div>
+          <commandFrequency v-bind:timeRange="timeRange" :key="sysKey"></commandFrequency>
+        </div>
+      </div>
     </div>
     </div>
 </template>
@@ -68,13 +74,14 @@
 <script>
   import PiStats from "@/components/Graphs/PiStats";
   import batLevel from "@/components/Graphs/batLevel";
+  import commandFrequency from "./Graphs/commandFrequency";
   import micAngle from "./Graphs/micAngle";
   import binbotproxy from "../services/binbotproxy";
 
 export default {
   name: 'HelloWorld',
   components: {
-    PiStats, batLevel, micAngle
+    PiStats, batLevel, micAngle, commandFrequency
   },
   props: {
     msg: String

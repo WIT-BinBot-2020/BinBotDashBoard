@@ -30,5 +30,11 @@ export default {
             timeRange.sysTimeRangeMins = 1
         }
         return Api().get("micAngleArrival?rangeDays="+timeRange.sysTimeRangeDays+"&rangeHours="+timeRange.sysTimeRangeHours+"&rangeMinutes="+timeRange.sysTimeRangeMins)
+    },
+    commandFrequency(){
+        return Api().get("commandFrequency")
+    },
+    keywordFrequency(){
+        return Api().get("micKeyword")
     }
 }
