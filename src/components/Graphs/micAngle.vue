@@ -86,8 +86,12 @@
             },
             getRanges() {
                 this.rangeLengths = []
+                let total = 0
                 for(let i in this.sortedAngleData){
-                    this.rangeLengths.push(this.sortedAngleData[i].length)
+                    total += (this.sortedAngleData[i].length)
+                }
+                for(let i in this.sortedAngleData){
+                    this.rangeLengths.push(((this.sortedAngleData[i].length/ total) * 100).toFixed(0))
                 }
                 console.log(Object.keys(this.sortedAngleData))
                 this.setOptions()
@@ -97,7 +101,7 @@
                 this.chartdata = {
                     labels: Object.keys(this.sortedAngleData),
                     datasets: [{
-                        label: 'Mic Angle Detection in Time Range',
+                        label: 'Mic Angle Detection% in Time Range',
                         borderColor: 'blue',
                         data: this.rangeLengths,
                     }]}
