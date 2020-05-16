@@ -5,7 +5,6 @@
 <script>
     import {Bar} from 'vue-chartjs'
     import binbotproxy from "@/services/binbotproxy";
-    // import binbotproxy from "@/services/binbotproxy";
 
     export default {
         name: "batLevel",

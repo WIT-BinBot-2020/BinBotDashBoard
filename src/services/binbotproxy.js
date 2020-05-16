@@ -13,5 +13,8 @@ export default {
     },
     recentMessages() {
         return Api().get('recentMessages')
+    },
+    micAngle(timeRange) {
+        return Api().get('micAngleArrival?range='+timeRange)
     }
 }

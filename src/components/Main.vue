@@ -24,21 +24,25 @@
         <button class="ui green button" v-on:click="getMessages">Refresh</button>
       </div>
     </div>
-  <div class="ui raised container segment">
-    <batLevel></batLevel>
-  </div>
+    <div class="ui raised container segment">
+      <batLevel></batLevel>
+    </div>
+    <div class="ui raised container segment">
+      <micAngle></micAngle>
+    </div>
   </div>
 </template>
 
 <script>
   import PiStats from "@/components/Graphs/PiStats";
   import batLevel from "@/components/Graphs/batLevel";
+  import micAngle from "./Graphs/micAngle";
   import binbotproxy from "../services/binbotproxy";
 
 export default {
   name: 'HelloWorld',
   components: {
-    PiStats, batLevel
+    PiStats, batLevel, micAngle
   },
   props: {
     msg: String
