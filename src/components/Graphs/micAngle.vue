@@ -108,6 +108,14 @@
                 this.options = {
                     responsive: true,
                     maintainAspectRatio: false,
+                    scale: {
+                        ticks: {
+                            beginAtZero: true,
+                            min: 0,
+                            max: 100,
+                            stepSize: 10
+                        }
+                    }
                 }
             }
         }

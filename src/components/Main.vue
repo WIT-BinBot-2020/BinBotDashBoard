@@ -1,34 +1,47 @@
 <template>
-  <div>
-  <div class="ui raised container segment">
-    <PiStats v-bind:timeRange="piSysTimeRange" :key="piSysKey"></PiStats>
-    <br>
-    <label>Time Range - Days</label>
-    <div class="ui icon input">
-      <input v-model="piSysTimeRange" type="text" placeholder="Time Range">
-      <i class="inverted circular search link icon" v-on:click="updatePiStats"></i>
-    </div>
-  </div>
-    <div class="ui raised centered card">
-      <div class="content">
-        <header class="ui centered header"> Recent Messages </header>
+  <div class="ui two column stackable middle aligned grid raised segment">
+    <div class="column">
+      <div class="ui raised container segment">
+        <div class="ui centered header">PI System Usage</div>
+        <PiStats v-bind:timeRange="piSysTimeRange" :key="piSysKey"></PiStats>
+        <br>
+        <label>Time Range - Days</label>
+        <div class="ui icon input">
+          <input v-model="piSysTimeRange" type="text" placeholder="Time Range">
+          <i class="inverted circular search link icon" v-on:click="updatePiStats"></i>
+        </div>
       </div>
-        <div class="content">
-          <div class="ui middle aligned divided list">
-          <div class="item" v-for="(item, index) in recentMessages" :key="index">
+    </div>
+    <div class="column">
+      <div class="ui raised centered container segment">
+        <div class="ui raised centered card">
+          <div class="content">
+            <div class="ui centered header">Recent Messages</div>
+          </div>
             <div class="content">
-              <label class="header">{{index + 1}} : {{ item.message }}</label>
+              <div class="ui middle aligned divided list">
+              <div class="item" v-for="(item, index) in recentMessages" :key="index">
+                <div class="content">
+                  <label class="header">{{index + 1}} : {{ item.message }}</label>
+                </div>
+              </div>
             </div>
+            <button class="ui green button" v-on:click="getMessages">Refresh</button>
           </div>
         </div>
-        <button class="ui green button" v-on:click="getMessages">Refresh</button>
       </div>
     </div>
-    <div class="ui raised container segment">
-      <batLevel></batLevel>
+    <div class="column">
+      <div class="ui raised container segment">
+        <div class="ui centered header">Battery Level</div>
+        <batLevel></batLevel>
+      </div>
     </div>
-    <div class="ui raised container segment">
-      <micAngle></micAngle>
+    <div class="column">
+      <div class="ui raised centered container segment">
+        <div class="ui centered header">Mic Angle Detection</div>
+        <micAngle></micAngle>
+      </div>
     </div>
   </div>
 </template>
