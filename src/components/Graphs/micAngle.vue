@@ -111,11 +111,9 @@
                     scale: {
                         ticks: {
                             beginAtZero: true,
-                            min: 0,
-                            max: 100,
-                            stepSize: 10
+
                         }
-                        }
+                    }
                 }
             }
         }
