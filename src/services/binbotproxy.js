@@ -36,5 +36,8 @@ export default {
     },
     keywordFrequency(){
         return Api().get("micKeyword")
+    },
+    soundFrequency(){
+        return Api().get("soundFrequency")
     }
 }

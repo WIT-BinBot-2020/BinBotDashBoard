@@ -68,9 +68,15 @@
         </div>
       </div>
       <div class="column">
+      <div class="ui raised centered container segment">
+        <div class="ui centered header">Keyword Frequency</div>
+        <micKeyword v-bind:timeRange="timeRange" :key="sysKey"></micKeyword>
+      </div>
+    </div>
+      <div class="column">
         <div class="ui raised centered container segment">
-          <div class="ui centered header">Keyword Frequency</div>
-          <micKeyword v-bind:timeRange="timeRange" :key="sysKey"></micKeyword>
+          <div class="ui centered header">Sound Played Frequency</div>
+          <soundFrequency v-bind:timeRange="timeRange" :key="sysKey"></soundFrequency>
         </div>
       </div>
     </div>
@@ -84,11 +90,12 @@
   import micAngle from "./Graphs/micAngle";
   import binbotproxy from "../services/binbotproxy";
   import micKeyword from "./Graphs/micKeyword";
+  import soundFrequency from "./Graphs/soundFrequency";
 
 export default {
   name: 'Main',
   components: {
-    PiStats, batLevel, micAngle, commandFrequency, micKeyword
+    PiStats, batLevel, micAngle, commandFrequency, micKeyword, soundFrequency
   },
   props: {
     msg: String
